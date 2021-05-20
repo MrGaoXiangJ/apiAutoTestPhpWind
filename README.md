@@ -42,6 +42,8 @@ phpwind（简称：pw）是一个基于PHP和MySQL的开源社区程序，是国
 
 1.单接口的用例设计
 
+![](Source/phpwind抓包.png)
+
 ### 项目搭建
 
 #### 目标
