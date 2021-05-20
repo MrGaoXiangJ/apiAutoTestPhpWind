@@ -60,6 +60,7 @@ phpwind（简称：pw）是一个基于PHP和MySQL的开源社区程序，是国
 
 ```bash
 pip install requests
+pip install pyyaml
 ```
 
 ### 代码编写
@@ -93,12 +94,31 @@ pip install requests
 
    2. 使用unittest管理测试脚本
 
-3. 执行测试脚本
+3. yaml处理接口依赖公用数据
+
+   ```python
+   import yaml
+   
+   
+   class ReadExtract:
+       def read_extract(self):
+           with open('../tools/extract.yaml', encoding='utf-8') as f:
+               result = yaml.load(stream=f, Loader=yaml.FullLoader)
+               # dict对象
+               return result
+   
+       def write_extract(self, data):
+           with open('../tools/extract.yaml', encoding='utf-8', mode='w') as f:
+               yaml.dump(data, stream=f, allow_unicode=True)
+   
+   ```
+
+4. 执行测试脚本
 
    1. 使用unittest
    2. 调试代码
 
-4. 数据库数据校验
+5. 数据库数据校验
 
    1. 用例场景
 
@@ -108,7 +128,7 @@ pip install requests
 
    3. 示例代码
 
-5. 封装数据库操作工具类
+6. 封装数据库操作工具类
 
    为了减少代码的冗余,提高测试效率,可以对数据库的相关操作封装成工具类
 
@@ -142,8 +162,6 @@ pip install requests
       修改测试脚本,使用parameterized实现参数化
 
 ### 生成测试报告
-
-
 
 #### 目标
 
