@@ -11,7 +11,7 @@ from tools.HTMLTestRunner import HTMLTestRunner
 
 
 # 第一步：组装测试套件
-suite = unittest.defaultTestLoader.discover("./case",pattern="test*.py")
+suite = unittest.defaultTestLoader.discover("./case", pattern="test*.py")
 
 # 第二步：指定报告存放路径及文件名称
 file_path = "./report/{}.html".format(time.strftime("%Y_%m_%d %H_%M_%S"))

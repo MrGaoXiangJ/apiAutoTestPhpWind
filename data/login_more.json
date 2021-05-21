@@ -1,0 +1,16 @@
+﻿{
+  "login_002": {
+                  "jumpurl": "http://localhost/phpwind/login.php",
+                  "step": "2",
+                  "pwuser": "testcase2",
+                  "pwpwd": "123456",
+                  "status_code": 201,
+                  "lgt": 0},
+  "login_001": {
+                  "jumpurl": "http://localhost/phpwind/login.php",
+                  "step": "2",
+                  "pwuser": "admin",
+                  "pwpwd": "12345",
+                  "status_code": 201,
+                  "lgt": 0}
+}

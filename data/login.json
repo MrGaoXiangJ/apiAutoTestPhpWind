@@ -1,5 +1,5 @@
 ﻿{
-  "jumpurl":"http://localhost/phpwind/index.php",
+  "jumpurl": "http://localhost/phpwind/login.php",
   "step": "2",
   "pwuser": "admin",
   "pwpwd": "12345",

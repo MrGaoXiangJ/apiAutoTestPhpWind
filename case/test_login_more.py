@@ -1,30 +1,26 @@
-"""
-    目标：完成登录业务层实现
-"""
-
-# 导包 unittest ApiLogin
-# import json
+﻿import re
 import unittest
 from time import sleep
 
-import requests.utils
+import requests
+from parameterized import parameterized
 
 from api.api_login import ApiLogin
-from parameterized import parameterized
 from tools.read_extract import ReadExtract
-import re
 from tools.read_json import ReadJson
 
 
 def get_data():
-    data = ReadJson("login.json").read_json()
-    # 新建空列表，添加读取json数据
+    datas = ReadJson("login_more.json").read_json()
+    # 新建空列表,添加读取json数据
     arrs = []
-    arrs.append((data.get("jumpurl"),
-                 data.get("step"),
-                 data.get("pwuser"),
-                 data.get("pwpwd"),
-                 data.get("lgt")))
+    # 遍历获取所有value
+    for data in datas.values():
+        arrs.append((data.get("jumpurl"),
+                     data.get("step"),
+                     data.get("pwuser"),
+                     data.get("pwpwd"),
+                     data.get("lgt")))
     return arrs
 
 # 新建测试类
@@ -36,10 +32,7 @@ class TestLogin(unittest.TestCase):
         # 调用登录方法
         s = ApiLogin().api_post_login(jumpurl, step, pwuser, pwpwd, lgt)
 
-        # winduser=AG9dAQ4GAFBTVVZTAwIOCVFRCAVRUg5XBQRbXQVRVwMACGw;
-        # print(requests.utils.dict_from_cookiejar(s.cookies))
-
-        # # yaml方式处理接口依赖
+        # 调试使用=
         verifyDict = {"php_winduser": requests.utils.dict_from_cookiejar(s.cookies)["c7b10_winduser"]}
         ReadExtract().write_extract(verifyDict)
         print(verifyDict)

@@ -9,13 +9,11 @@ import requests
 # 新建类 登录接口对象
 class ApiLogin(object):
     # 新建方法 登录方法
-    def api_post_login(self, jumpurl, step, pwuser, pwpwd, lgt):
-        # headers 定义
-        headers = {"Content-Type": "application/json"}
-        # data 定义
-        data = {"step": step, "pwuser": pwuser, "pwpwd": pwpwd, "lgt": lgt}
+    def api_post_login(self, url, step, pwuser, pwpwd, lgt):
+        requestData = (f"jumpurl=http://localhost/phpwind/index.php&step={step}&pwuser={pwuser}&pwpwd={pwpwd}&head_login=''&lgt={lgt}")
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
         # 调用post并返回响应对象
-        return requests.post(jumpurl, headers=headers, json=data)
+        return requests.post(url, headers=headers, data=requestData)
 
 
 """
