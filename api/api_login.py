@@ -11,7 +11,10 @@ class ApiLogin(object):
     # 新建方法 登录方法
     def api_post_login(self, url, step, pwuser, pwpwd, lgt):
         requestData = (f"jumpurl=http://localhost/phpwind/index.php&step={step}&pwuser={pwuser}&pwpwd={pwpwd}&head_login=''&lgt={lgt}")
-        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        headers = {"Content-Type": "application/x-www-form-urlencoded",
+                   "Referer": "http://localhost/phpwind/index.php",
+                   "Accept-Encoding": "gzip, deflate, br",
+                   "Accept-Language": "zh-CN,zh;q=0.9"}
         # 调用post并返回响应对象
         return requests.post(url, headers=headers, data=requestData)
 

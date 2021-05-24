@@ -32,18 +32,19 @@ class TestLogin(unittest.TestCase):
         # 调用登录方法
         s = ApiLogin().api_post_login(jumpurl, step, pwuser, pwpwd, lgt)
 
+        winduserKey = "php_winduser_"+pwuser
         # 调试使用=
-        verifyDict = {"php_winduser": requests.utils.dict_from_cookiejar(s.cookies)["c7b10_winduser"]}
+        verifyDict = {winduserKey: requests.utils.dict_from_cookiejar(s.cookies)["c7b10_winduser"]}
         ReadExtract().write_extract(verifyDict)
         print(verifyDict)
-        sleep(3)
+        # sleep(3)
 
         # print(ReadExtract().read_extract()["verifyhash"])
         # 断言 响应信息 及 状态码assertEquals
-        self.assertEquals("OK", s.reason)
+        self.assertEqual("OK", s.reason)
         # self.assertEquals(expect_result, s.json()['message'])
         # 断言响应状态码
-        self.assertEquals(200, s.status_code)
+        self.assertEqual(200, s.status_code)
         # self.assertEquals(status_code, s.status_code)
 
 
